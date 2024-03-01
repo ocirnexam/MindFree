@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
 
         val todoViewModel by viewModels<TodoViewModel>()
 
-        val adapter = TodoAdapter(todoViewModel)
+        val adapter = TodoAdapter(todoViewModel.state.value.todos, todoViewModel)
         val rvTodo = findViewById<RecyclerView>(R.id.rvTodo)
 
         rvTodo.adapter = adapter
@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
                     todoViewModel.onEvent(TodoEvent.SetTodoText(item.title))
                     todoViewModel.onEvent(TodoEvent.SetTodoDescription(item.description))
                     todoViewModel.onEvent(TodoEvent.SaveTodo)
-                    adapter.notifyItemInserted(0)
+                    adapter.notifyItemInserted(adapter.itemCount)
                 }
             }).show()
         }

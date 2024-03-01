@@ -36,7 +36,7 @@ class TodoViewModel() : ViewModel() {
             TodoEvent.SaveTodo -> {
                 if (_state.value.todoText.isBlank() || _state.value.todoDescription.isBlank())
                     return
-                _todos.add(0, Todo(_state.value.todoText, _state.value.todoDescription, false))
+                _todos.add(Todo(_state.value.todoText, _state.value.todoDescription, false))
                 _state.update {
                     it.copy(
                         todoText = "",
