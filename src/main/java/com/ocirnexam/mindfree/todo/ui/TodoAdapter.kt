@@ -1,4 +1,4 @@
-package com.ocirnexam.mindfree.todo
+package com.ocirnexam.mindfree.todo.ui
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +8,7 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.ocirnexam.mindfree.R
+import com.ocirnexam.mindfree.todo.entities.Todo
 
 class TodoAdapter(
     private val viewModel: TodoViewModel
@@ -25,6 +26,7 @@ class TodoAdapter(
     override fun onBindViewHolder(holder: TodoViewHolder, position: Int) {
         holder.itemView.apply {
             findViewById<TextView>(R.id.todoTitle).text = todos[position].title
+            findViewById<TextView>(R.id.todoDescription).text = todos[position].description
             findViewById<CheckBox>(R.id.todoCheckbox).isChecked = todos[position].isChecked
             findViewById<ImageButton>(R.id.btnDelete).setOnClickListener {
                 viewModel.onEvent(TodoEvent.DeleteTodo(todos[position]))
