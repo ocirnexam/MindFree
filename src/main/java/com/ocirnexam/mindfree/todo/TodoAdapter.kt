@@ -10,12 +10,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ocirnexam.mindfree.R
 
 class TodoAdapter(
-    val viewModel: TodoViewModel
+    private val viewModel: TodoViewModel
 ) : RecyclerView.Adapter<TodoAdapter.TodoViewHolder>() {
 
-    inner class TodoViewHolder(itemview: View): RecyclerView.ViewHolder(itemview)
+    inner class TodoViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
 
-    var todos: List<Todo> = viewModel.state.value.todos
+    private var todos: List<Todo> = viewModel.state.value.todos
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodoViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.todo_item, parent, false)
